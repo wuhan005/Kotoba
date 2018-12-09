@@ -12,4 +12,10 @@ class Config{
 
     public static $token = 'KotobaAdmin';
 
+    //Database config.
+    public static $dbHost = 'localhost';
+    public static $dbName = 'root';
+    public static $dbPassword = 'root';
+    public static $dbTable = 'Kotoba';
+
 }

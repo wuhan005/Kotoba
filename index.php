@@ -11,6 +11,9 @@
 //Load the config file.
 require_once('Config.php');
 
+//Load the Api output part.
+require_once('Api.php');
+
 //URL Router
 $urlPathInfo = @explode('/', $_SERVER['PATH_INFO']);
 $nowPage = @$urlPathInfo[1];
@@ -24,5 +27,5 @@ $pages = ['Manage', 'Add', 'Api'];
 if(in_array($nowPage, $pages)){
     require_once($nowPage . 'php');
 }else{
-    
+    Api::showError('未找到页面');
 }

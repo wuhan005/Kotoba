@@ -7,5 +7,18 @@
  */
 
 class Api{
-    
+    public function __construct(){
+        header('content:application/json;chartset=uft-8');
+    }
+
+    //Show the error message.
+    public static function showError($_msg = '未知错误！'){
+        $return = array(
+            'code' => 500,
+            'data' => $_msg
+        );
+
+        echo(json_encode($return));
+        return;
+    }
 }
