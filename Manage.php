@@ -20,6 +20,7 @@ $childRouterTable = array(
     'Add' => 'add_new_kotoba',
     'Edit' => 'edit_kotoba',
     'Delete' => 'delete_kotoba',
+    'GetLyric' => 'load_song_lyric'
 );
 
 //Set default page.
@@ -55,6 +56,29 @@ function delete_kotoba(){
 }
 
 //Tool Function
+
+//Load the song lyric from qq music api.
+function load_song_lyric(){
+
+    if(isset($_GET['mid'])){
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_URL, "https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?songmid={$_GET['mid']}&nobase64=1");
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_REFERER, 'https://y.qq.com/portal/player.html');
+
+        $lyric = curl_exec($ch);
+        curl_close($ch);
+
+        var_dump($lyric);
+
+    }else{
+        Api::showError('缺少参数');
+    }
+
+
+}
+
 function load_header(){
     require_once(BASEPATH . '/view/templete/Header.php');
 }
