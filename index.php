@@ -20,17 +20,25 @@ require_once('Api.class.php');
 require_once('Database.class.php');
 
 //URL Router
+//Get the now page.
 $urlPathInfo = @explode('/', $_SERVER['PATH_INFO']);
 $nowPage = @$urlPathInfo[1];
+
+//Set the default page.
 if($nowPage == null){
-    //If it is /index.php, then go to the mainpage.
-    $nowPage = 'Manage';
+    //If it is /index.php, then go to the api.
+    $nowPage = 'Api';
 }
 
-$pages = ['Manage', 'Add', 'Api.class'];
+//The router table.
+$router = array(
+    'Api' => 'Api.class.php',
+    'Manage' => 'Manage.php'
+);
 
-if(in_array($nowPage, $pages)){
-    require_once($nowPage . '.php');
+//Load the page.
+if(array_key_exists($nowPage, $router)){
+    require_once($router[$nowPage]);
 }else{
     Api::showError('未找到页面');
 }
