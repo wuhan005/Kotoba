@@ -6,6 +6,8 @@
  * Time: 10:24 PM
  */
 
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Config{
     private function __construct(){}
     private function __clone(){}
