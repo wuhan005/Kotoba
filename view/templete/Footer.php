@@ -8,6 +8,8 @@
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="/static/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="/static/js/Kotoba.js"></script>
 </body>
 
 </html>

@@ -17,7 +17,7 @@ $childRouterTable = array(
     'Main' => 'load_mainpage',
 
     //Control part.
-    'Add' => 'add_new_kotaba',
+    'Add' => 'add_new_kotoba',
     'Edit' => 'edit_kotoba',
     'Delete' => 'delete_kotoba',
 );
@@ -35,11 +35,15 @@ if(array_key_exists($nowPage, $childRouterTable)){
 }
 
 function load_mainpage(){
+    load_header();
 
+    load_footer();
 }
 
 function add_new_kotoba(){
-
+    load_header();
+    require_once(BASEPATH . '/view/Add.php');
+    load_footer();
 }
 
 function edit_kotaba(){
@@ -47,5 +51,14 @@ function edit_kotaba(){
 }
 
 function delete_kotoba(){
-    
+
+}
+
+//Tool Function
+function load_header(){
+    require_once(BASEPATH . '/view/templete/Header.php');
+}
+
+function load_footer(){
+    require_once(BASEPATH . '/view/templete/Footer.php');
 }
