@@ -13,6 +13,19 @@
     <!-- Material Design Bootstrap -->
     <link href="/static/css/mdb.min.css" rel="stylesheet">
 
+    <!-- JQuery -->
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/static/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/static/js/mdb.min.js"></script>
+    <!-- SCRIPTS -->
+
+
+    <script type="text/javascript" src="/static/js/lrc-kit.min.js"></script>
+
 </head>
 
 <body>
