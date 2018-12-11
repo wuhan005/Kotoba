@@ -12,6 +12,7 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="/static/css/mdb.min.css" rel="stylesheet">
+
 </head>
 
 <body>

@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Api{
     public function __construct(){
-        header(' Content-Type: application/json; chartset=UTF-8');
+        header('Content-Type: application/json; chartset=UTF-8');
     }
 
     //Show the error message.

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col-7">
             <!-- input song name -->
             <div class="form-inline">
                 <div class="md-form">
@@ -12,8 +12,8 @@
         </div>
 
 
-        <div class="col-8">
-            One of three columns
+        <div id="LyricContainer" class="col-4 mt-5">
+
         </div>
     </div>
 </div>

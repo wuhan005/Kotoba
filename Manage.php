@@ -59,6 +59,7 @@ function delete_kotoba(){
 
 //Load the song lyric from qq music api.
 function load_song_lyric(){
+    //header('Content-Type: application/json; chartset=UTF-8');
 
     if(isset($_GET['mid'])){
         $ch = curl_init();
@@ -70,7 +71,7 @@ function load_song_lyric(){
         $lyric = curl_exec($ch);
         curl_close($ch);
 
-        var_dump($lyric);
+        echo($lyric);
 
     }else{
         Api::showError('缺少参数');
