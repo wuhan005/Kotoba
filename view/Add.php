@@ -9,6 +9,12 @@
                 <button id="Btn_SearchSong" type="button" class="btn btn-primary btn-sm">Search</button>
             </div>
 
+            <div class="md-form">
+                <textarea type="text" id="resultArea" class="md-textarea form-control" rows="3"></textarea>
+                <button id="Btn_Submit" type="button" class="btn btn-primary btn-sm">Add</button>
+
+            </div>
+
             <!-- song table -->
             <table class="table">
                 <thead>

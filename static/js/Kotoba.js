@@ -30,6 +30,7 @@ $('#Btn_SearchSong').click(
 );
 
 
+
 function showLyric(_mid){
     $.ajax({
         type : "GET",
@@ -57,11 +58,35 @@ function showLyric(_mid){
 
                 var str =
                     '<div class="custom-control custom-checkbox">\n' +
-                    '<input type="checkbox" class="custom-control-input" id="lrc_' + i + '">\n' +
+                    '<input type="checkbox" class="custom-control-input" id="lrc_' + i + '" value="'+ lrc[i]['content'] +'">\n' +
                     '<label class="custom-control-label" for="lrc_'+ i +'">' + lrc[i]['content'] + '</label>\n' +
                     '</div>\n';
                 $('#LyricContainer').append(str);
             }
+
+            //Checkbox Event
+            $("input:checkbox").change(function() {
+                refreshLyric();
+                console.log("选中的checkbox的值为：");
+            });
         }
     });
+}
+
+function refreshLyric(){
+    $('#resultArea').val("");
+
+    var selectLyric = [];
+
+    $("input:checkbox:checked").each(function(i){
+        selectLyric[i] = $(this).val();
+    });
+
+    for(var i = 0; i < selectLyric.length; i++){
+        if(i != selectLyric.length - 1){
+            $('#resultArea').val($('#resultArea').val() + selectLyric[i] + '，');
+        }else{
+            $('#resultArea').val($('#resultArea').val() + selectLyric[i] + '。');
+        }
+    }
 }
