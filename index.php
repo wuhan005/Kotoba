@@ -18,6 +18,7 @@ require_once('Api.class.php');
 
 //Load the database;
 require_once('Database.class.php');
+$db = new Database();
 
 //URL Router
 //Get the now page.
@@ -33,7 +34,7 @@ if($nowPage == null){
 //The router table.
 $router = array(
     'Api' => 'Api.class.php',
-    'Manage' => 'Manage.php'
+    'Manage' => 'Manage.php',
 );
 
 //Load the page.

@@ -18,15 +18,16 @@ class Database{
     }
 
     public function Init(){
-        if($this->isInit){
+        if(!$this->isInit){
             if(!$this->conn = mysqli_connect(Config::$dbHost, Config::$dbName, Config::$dbPassword, Config::$dbTable)){
                 Api::showError('数据库连接错误！');
             }
         }
     }
 
-    public function AddKotoba(){
-
+    public function AddKotoba($_content){
+        $date = date("Y/m/d");
+        return mysqli_query($this->conn, "INSERT INTO `Kotoba` (`ID`, `Content`, `PublishDate`) VALUES (NULL, '{$_content}', '{$date}');");
     }
 
 }

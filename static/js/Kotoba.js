@@ -9,7 +9,7 @@ $('#Btn_SearchSong').click(
         $.ajax({
             type:'GET',
             async: false,
-            url: 'https://c.y.qq.com/soso/fcgi-bin/search_cp?ct=24&aggr=1&cr=1&lossless=1&p=1&n=8&w=' + keyWord + '&format=jsonp&inCharset=utf8&outCharset=utf-8&callback=callback&_=1544531077787',
+            url: 'https://c.y.qq.com/soso/fcgi-bin/search_cp?ct=24&aggr=1&cr=1&lossless=1&p=1&n=20&w=' + keyWord + '&format=jsonp&inCharset=utf8&outCharset=utf-8&callback=callback&_=1544531077787',
             dataType: "jsonp",
             jsonpCallback: 'callback',
             success : function(data) {
@@ -79,7 +79,7 @@ function refreshLyric(){
     var selectLyric = [];
 
     $("input:checkbox:checked").each(function(i){
-        selectLyric[i] = $(this).val();
+        selectLyric[i] = $(this).val().replace(' ', '，');
     });
 
     for(var i = 0; i < selectLyric.length; i++){
@@ -90,3 +90,15 @@ function refreshLyric(){
         }
     }
 }
+
+//Submit data.
+$('#Btn_Submit').click(function () {
+    $.ajax({
+        type:'POST',
+        url: '/Manage/AddKotoba',
+        data: 'Content=' + $('#resultArea').val() + '&Token=' + $('#Token').val(),
+        success : function(data) {
+            console.log(111);
+        }
+    })
+});

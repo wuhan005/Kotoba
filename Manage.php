@@ -20,7 +20,8 @@ $childRouterTable = array(
     'Add' => 'add_new_kotoba',
     'Edit' => 'edit_kotoba',
     'Delete' => 'delete_kotoba',
-    'GetLyric' => 'load_song_lyric'
+    'GetLyric' => 'load_song_lyric',
+    'AddKotoba' =>  'add',
 );
 
 //Set default page.
@@ -53,6 +54,24 @@ function edit_kotaba(){
 
 function delete_kotoba(){
 
+}
+
+
+//Action
+
+//Add data.
+function add(){
+    global $db;
+
+    if(isset($_POST['Token'], $_POST['Content'])){
+        if($_POST['Token'] === Config::$token){
+            $db->AddKotoba($_POST['Content']);
+        }else{
+            Api::showError('无权访问');
+        }
+    }else{
+        Api::showError('缺少参数');
+    }
 }
 
 //Tool Function
