@@ -36,4 +36,10 @@ class Database{
         return $data->fetch_assoc();
     }
 
+    public function GetAllKotoba(){
+        $data = $this->conn->query('SELECT * FROM `Kotoba`');
+
+        return $data->fetch_all(MYSQLI_BOTH);
+    }
+
 }

@@ -67,7 +67,6 @@ function showLyric(_mid){
             //Checkbox Event
             $("input:checkbox").change(function() {
                 refreshLyric();
-                console.log("选中的checkbox的值为：");
             });
         }
     });
@@ -79,7 +78,7 @@ function refreshLyric(){
     var selectLyric = [];
 
     $("input:checkbox:checked").each(function(i){
-        selectLyric[i] = $(this).val().replace(' ', '，');
+        selectLyric[i] = $(this).val().replace(/ /g, '，');
     });
 
     for(var i = 0; i < selectLyric.length; i++){
@@ -98,7 +97,7 @@ $('#Btn_Submit').click(function () {
         url: '/Manage/AddKotoba',
         data: 'Content=' + $('#resultArea').val() + '&Token=' + $('#Token').val(),
         success : function(data) {
-            console.log(111);
+            $('#resultArea').val('');
         }
     })
 });

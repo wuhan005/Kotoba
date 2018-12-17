@@ -48,8 +48,13 @@ function add_new_kotoba(){
     load_footer();
 }
 
-function edit_kotaba(){
+function edit_kotoba(){
+    global $db;
 
+    load_header();
+    $kotobaData = $db->GetAllKotoba();
+    require_once(BASEPATH . '/view/Edit.php');
+    load_footer();
 }
 
 function delete_kotoba(){

@@ -56,7 +56,7 @@
                 <a class="nav-link" href="/Manage/Add">Add</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Manage</a>
+                <a class="nav-link" href="/Manage/Edit">Edit</a>
             </li>
         </ul>
         <!-- Links -->
