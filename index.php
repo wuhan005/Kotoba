@@ -13,12 +13,12 @@ define('BASEPATH', dirname(__FILE__));
 //Load the config file.
 require_once('Config.class.php');
 
-//Load the Api.class output part.
-require_once('Api.class.php');
-
 //Load the database;
 require_once('Database.class.php');
 $db = new Database();
+
+//Load the Api.class output part.
+require_once('Api.class.php');
 
 //URL Router
 //Get the now page.

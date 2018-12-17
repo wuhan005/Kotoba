@@ -30,4 +30,10 @@ class Database{
         return mysqli_query($this->conn, "INSERT INTO `Kotoba` (`ID`, `Content`, `PublishDate`) VALUES (NULL, '{$_content}', '{$date}');");
     }
 
+    public function GetSingleKotoba(){
+        //Random select one kotoba.
+        $data = $this->conn->query("SELECT * FROM `Kotoba` AS t1 JOIN (SELECT ROUND(RAND() * ((SELECT MAX(`ID`) FROM `Kotoba`)-(SELECT MIN(`ID`) FROM `Kotoba`))+(SELECT MIN(`ID`) FROM `Kotoba`)) AS `ID`) AS t2 WHERE t1.ID >= t2.ID ORDER BY t1.ID LIMIT 1");
+        return $data->fetch_assoc();
+    }
+
 }
