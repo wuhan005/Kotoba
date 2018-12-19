@@ -47,11 +47,6 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/Manage/Main">Dashboard
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/Manage/Add">Add</a>
             </li>

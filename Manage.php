@@ -14,14 +14,16 @@ $nowPage = @$urlPathInfo[2];       //Get the child page.
 
 //Child page router
 $childRouterTable = array(
-    'Main' => 'load_mainpage',
+    'Login' => 'login',
 
     //Control part.
+    'OnLogin' => 'on_login',
+    'OnLogout' => 'on_logout',
     'Add' => 'add_new_kotoba',
     'Edit' => 'edit_kotoba',
-    'Delete' => 'delete_kotoba',
     'GetLyric' => 'load_song_lyric',
     'AddKotoba' =>  'add',
+    'DeleteKotoba' => 'delete',
 );
 
 //Set default page.
@@ -36,9 +38,9 @@ if(array_key_exists($nowPage, $childRouterTable)){
     Api::showError('未找到页面');
 }
 
-function load_mainpage(){
+function login(){
     load_header();
-
+    require_once(BASEPATH . '/view/Login.php');
     load_footer();
 }
 
@@ -57,23 +59,25 @@ function edit_kotoba(){
     load_footer();
 }
 
-function delete_kotoba(){
-
-}
-
-
 //Action
 
 //Add data.
 function add(){
     global $db;
 
-    if(isset($_POST['Token'], $_POST['Content'])){
-        if($_POST['Token'] === Config::$token){
-            $db->AddKotoba($_POST['Content']);
-        }else{
-            Api::showError('无权访问');
-        }
+    if(isset($_POST['Content'])){
+        $db->AddKotoba($_POST['Content']);
+    }else{
+        Api::showError('缺少参数');
+    }
+}
+
+function delete(){
+    global $db;
+
+    if(isset($_GET['ID'])){
+        $db->DeleteKotoba($_GET['ID']);
+        header('Location:/Manage/Edit');
     }else{
         Api::showError('缺少参数');
     }

@@ -19,7 +19,7 @@
             <tr>
                 <td><?php echo($value['Content']);?></td>
                 <td><?php echo($value['PublishDate']);?></td>
-                <td><button href="/Manage/Delete?ID=<?php echo($value[0]);?>" type="button" class="btn btn-danger btn-sm">Delete</button></td>
+                <td><a href="/Manage/DeleteKotoba?ID=<?php echo($value[0]);?>">Delete</a></td>
             </tr>
 
             <?php }?>
