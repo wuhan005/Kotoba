@@ -34,7 +34,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark primary-color">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="/">Kotoba</a>
+    <a class="navbar-brand" href="/Api?t=simple">Kotoba</a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"

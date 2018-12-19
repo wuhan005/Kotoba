@@ -12,7 +12,8 @@ class Config{
     private function __construct(){}
     private function __clone(){}
 
-    public static $token = 'KotobaAdmin';
+    public static $ID = 'root';
+    public static $Password = '63a9f0ea7bb98050796b649e85481845';
 
     //Database config.
     public static $dbHost = 'localhost';

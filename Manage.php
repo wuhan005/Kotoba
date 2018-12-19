@@ -19,6 +19,7 @@ $childRouterTable = array(
     //Control part.
     'OnLogin' => 'on_login',
     'OnLogout' => 'on_logout',
+
     'Add' => 'add_new_kotoba',
     'Edit' => 'edit_kotoba',
     'GetLyric' => 'load_song_lyric',
@@ -28,7 +29,7 @@ $childRouterTable = array(
 
 //Set default page.
 if($nowPage == null){
-    $nowPage = 'Main';
+    $nowPage = 'Edit';
 }
 
 //Execute!
@@ -45,12 +46,16 @@ function login(){
 }
 
 function add_new_kotoba(){
+    check_login();
+
     load_header();
     require_once(BASEPATH . '/view/Add.php');
     load_footer();
 }
 
 function edit_kotoba(){
+    check_login();
+
     global $db;
 
     load_header();
@@ -61,8 +66,52 @@ function edit_kotoba(){
 
 //Action
 
+function on_login(){
+    session_start();
+    if(isset($_POST['ID'], $_POST['Password'])){
+        $id = $_POST['ID'];
+        $password = $_POST['Password'];
+
+        if($id === Config::$ID AND md5($password) === Config::$Password){
+            $_SESSION['ID'] = $id;
+            $_SESSION['Password'] = $password;
+            $_SESSION['isLogin'] = true;
+
+            header('Location:/Manage/Edit');
+        }else{
+            header('Location:/Manage/Login');
+        }
+    }
+}
+
+function check_login(){
+    session_start();
+    if(isset($_SESSION['ID'], $_SESSION['Password'], $_SESSION['isLogin'])){
+        $id = $_SESSION['ID'];
+        $password = $_SESSION['Password'];
+
+        if(!($id === Config::$ID AND md5($password) === Config::$Password)){
+            header('Location:/Manage/Login');
+            die();
+        }
+
+    }else{
+        header('Location:/Manage/Login');
+        die();
+    }
+}
+
+function on_logout(){
+    session_start();
+    unset($_SESSION['ID']);
+    unset($_SESSION['Password']);
+    $_SESSION['isLogin'] = false;
+}
+
 //Add data.
 function add(){
+    check_login();
+
     global $db;
 
     if(isset($_POST['Content'])){
@@ -73,6 +122,8 @@ function add(){
 }
 
 function delete(){
+    check_login();
+
     global $db;
 
     if(isset($_GET['ID'])){
